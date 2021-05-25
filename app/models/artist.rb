@@ -4,4 +4,6 @@ class Artist < ApplicationRecord
     has_many :venues, through: :concerts
     
     validates :name, presence: true
+
+    
 end
