@@ -4,12 +4,14 @@ Rails.application.routes.draw do
   
 
   resources :venues, only: [:show] do
-    resources :concerts
+    resources :concerts, only: [:show, :index, :new]
   end
 
   resources :artists, only: [:show] do
-    resources :concerts
+    resources :concerts,  only: [:show, :index, :new]
   end
+
+  resources :concerts
 
   resources :artists, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
