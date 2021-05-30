@@ -1,7 +1,14 @@
 <h1><%= @artist.name %></h1>
 
+
 <h3><%= @artist.hometown %></h3>
 
-<%# render partial:"concerts/concert", collection: @artist.concerts %>
+Upcoming Concerts: <br>
+<%= render partial:"concerts/concert", collection: @artist.concerts.upcoming %> <br>
+<br>
+
+All Concerts: <br>
+<%= render partial:"concerts/concert", collection: @artist.concerts%> <br>
+<br>
 
 <p> <%= @artist.bio %></P>
