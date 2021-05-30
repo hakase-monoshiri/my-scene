@@ -1,3 +1,4 @@
 <h1><%= venue.name %></h1>
 <p><%= venue.description %></p>
-<h6><%= render partial: "addresses/address", locals: {address: venue.address ||= Address.all.first} %></h6>
+<%# the address borrow line is just to get it working on the current database. A venue is invalid without an address, so there should be no reason that a venue exists without an address %>
+<h6><%= render partial: "addresses/address", locals: {address: venue.address ||= Address.all.first } %></h6>
