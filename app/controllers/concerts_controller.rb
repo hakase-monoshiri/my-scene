@@ -41,6 +41,15 @@ class ConcertsController < ApplicationController
         @concert = Concert.find_by(id: params[:id])
     end
 
+    def update
+        @concert = Concert.find_by(id: params[:id])
+        if @concert.update(concert_params)
+            redirect_to concert_path(@concert)
+        else
+            render "edit"
+        end
+    end
+
 
     private
 
