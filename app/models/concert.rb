@@ -6,6 +6,9 @@ class Concert < ApplicationRecord
     include ActiveModel::Validations
     validates_with TimeValidator
 
+    validates :start_time, presence: true
+    validates :end_time, presence: true
+    validates :name, presence: true
 
     scope :over, -> { where("end_time < ?", DateTime.now) }
 
