@@ -37,6 +37,10 @@ class ConcertsController < ApplicationController
         end
     end
 
+    def edit
+        @concert = Concert.find_by(id: params[:id])
+    end
+
 
     private
 
