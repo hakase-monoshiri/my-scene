@@ -22,16 +22,23 @@ class VenuesController < ApplicationController
         end
     end
 
+    def edit
+        @venue = Venue.find_by(id: params[:id])
+    end
+
     private
 
     def venue_params
-        params.require(:venue).permit(:name, :description, address_attributes: [
-        :street_number,
-        :street_name,
-        :city,
-        :state,
-        :zip,
-        :venue_id])
+        params.require(:venue).permit(
+            :name, :description, address_attributes: [
+                :street_number,
+                :street_name,
+                :city,
+                :state,
+                :zip,
+                :venue_id
+            ]
+        )
     end
 
 end

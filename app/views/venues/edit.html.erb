@@ -1,0 +1,3 @@
+<%= form_tag venue_path(@venue) do %>
+<%= render partial: "form", locals: {venue: @venue, address: @venue.address} %>
+<% end %>
