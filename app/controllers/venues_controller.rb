@@ -8,4 +8,8 @@ class VenuesController < ApplicationController
         @venue = Venue.find_by(id: params[:id])
     end
 
+    def new
+        @venue = Venue.new
+    end
+
 end
