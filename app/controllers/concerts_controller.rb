@@ -21,7 +21,25 @@ class ConcertsController < ApplicationController
     end
 
     def show
-        @concert = Concert.find_by(id: params[:id])
+        if params[:artist_id]
+            artist = Artist.find_by(id: params[:artist_id])
+            if artist.nil?
+              redirect_to artists_path, alert: "Artist not found."
+            else
+                @concert = artist.concerts.find_by(id: params[:id])
+                    redirect_to artist_concerts_path(artist), alert: "Post not found." if @concert.nil?
+            end
+        elsif params[:venue_id]
+            venue = Venue.find_by(id: params[:venue_id])
+            if venue.nil?
+                redirect_to venues_path, alert: "Venue not found."
+            else
+                @concert = venue.concerts.find_by(id: params[:id])
+                    redirect_to venue_concerts_path(venue), alert: "Concert not found." if @concert.nil?
+            end
+        else
+            @concert = Concert.find(params[:id])
+        end
     end
 
     def new
@@ -38,7 +56,25 @@ class ConcertsController < ApplicationController
     end
 
     def edit
-        @concert = Concert.find_by(id: params[:id])
+        if params[:artist_id]
+            artist = Artist.find_by(id: params[:artist_id])
+            if artist.nil?
+              redirect_to artists_path, alert: "Artist not found."
+            else
+                @concert = artist.concerts.find_by(id: params[:id])
+                    redirect_to artist_concerts_path(artist), alert: "Post not found." if @concert.nil?
+            end
+        elsif params[:venue_id]
+            venue = Venue.find_by(id: params[:venue_id])
+            if venue.nil?
+                redirect_to venues_path, alert: "Venue not found."
+            else
+                @concert = venue.concerts.find_by(id: params[:id])
+                    redirect_to venue_concerts_path(venue), alert: "Concert not found." if @concert.nil?
+            end
+        else
+            @concert = Concert.find(params[:id])
+        end
     end
 
     def update
@@ -56,4 +92,5 @@ class ConcertsController < ApplicationController
     def concert_params
         params.require(:concert).permit(:name, :description, :start_time, :end_time, :artist_id, :venue_id)
     end
+
 end
