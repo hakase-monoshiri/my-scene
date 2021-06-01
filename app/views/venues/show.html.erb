@@ -1,1 +1,10 @@
 <%= render partial: "venue", locals: {venue: @venue} %>
+
+
+Upcoming Concerts: <br>
+<%= render partial:"concerts/concert", collection: @venue.concerts.upcoming %> <br>
+<br>
+
+All Concerts: <br>
+<%= render partial:"concerts/concert", collection: @venue.concerts%> <br>
+<br>
