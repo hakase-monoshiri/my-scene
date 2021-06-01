@@ -1,1 +1,21 @@
-<%= render partial: "concert", locals: {concert: @concert} %>
+<h1><%= @concert.name %> </h1> <br>
+
+Artist: <br>
+<%= @concert.artist.name %> <br>
+
+About: <br>
+<%= @concert.description %> <br>
+
+Location: <br>
+
+<%= @concert.venue.name %> <br>
+<%= render partial: "addresses/address", locals: {address: @concert.venue.address ||= Address.all.first} %> <br>
+
+<br>
+
+Start time: <%= @concert.start_time.strftime("%B %-d, %Y at %l:%M%P") %> <br>
+End time: <%= @concert.end_time.strftime("%B %-d, %Y at %l:%M%P")  %> <br>
+
+
+
+<%= button_to "Delete Concert", concert_path(@concert), method: :delete %> 

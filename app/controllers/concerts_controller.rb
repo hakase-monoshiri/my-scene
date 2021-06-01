@@ -86,6 +86,13 @@ class ConcertsController < ApplicationController
         end
     end
 
+    def destroy
+        @concert = Concert.find_by(id: params[:id])
+        @concert.destroy
+        redirect_to concerts_path
+    end
+
+
 
     private
 
