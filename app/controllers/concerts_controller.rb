@@ -2,16 +2,16 @@ class ConcertsController < ApplicationController
 
     def index
         if params[:artist_id]
-            artist = Artist.find_by(id: params[:artist_id])
-            if artist
-                @concerts = artist.concerts
+            @artist = Artist.find_by(id: params[:artist_id])
+            if @artist
+                @concerts = @artist.concerts
             else
                 redirect_to concerts_path
             end
         elsif params[:venue_id]
-            venue = Venue.find_by(id: params[:venue_id])
-            if venue
-                @concerts = venue.concerts
+            @venue = Venue.find_by(id: params[:venue_id])
+            if @venue
+                @concerts = @venue.concerts
             else
                 redirect_to concerts_path
             end
@@ -22,19 +22,19 @@ class ConcertsController < ApplicationController
 
     def show
         if params[:artist_id]
-            artist = Artist.find_by(id: params[:artist_id])
-            if artist.nil?
+            @artist = Artist.find_by(id: params[:artist_id])
+            if @artist.nil?
               redirect_to artists_path, alert: "Artist not found."
             else
-                @concert = artist.concerts.find_by(id: params[:id])
+                @concert = @artist.concerts.find_by(id: params[:id])
                     redirect_to artist_concerts_path(artist), alert: "Post not found." if @concert.nil?
             end
         elsif params[:venue_id]
-            venue = Venue.find_by(id: params[:venue_id])
-            if venue.nil?
+            @venue = Venue.find_by(id: params[:venue_id])
+            if @venue.nil?
                 redirect_to venues_path, alert: "Venue not found."
             else
-                @concert = venue.concerts.find_by(id: params[:id])
+                @concert = @venue.concerts.find_by(id: params[:id])
                     redirect_to venue_concerts_path(venue), alert: "Concert not found." if @concert.nil?
             end
         else
@@ -57,19 +57,19 @@ class ConcertsController < ApplicationController
 
     def edit
         if params[:artist_id]
-            artist = Artist.find_by(id: params[:artist_id])
-            if artist.nil?
+            @artist = Artist.find_by(id: params[:artist_id])
+            if @artist.nil?
               redirect_to artists_path, alert: "Artist not found."
             else
-                @concert = artist.concerts.find_by(id: params[:id])
+                @concert = @artist.concerts.find_by(id: params[:id])
                     redirect_to artist_concerts_path(artist), alert: "Post not found." if @concert.nil?
             end
         elsif params[:venue_id]
-            venue = Venue.find_by(id: params[:venue_id])
-            if venue.nil?
+            @venue = Venue.find_by(id: params[:venue_id])
+            if @venue.nil?
                 redirect_to venues_path, alert: "Venue not found."
             else
-                @concert = venue.concerts.find_by(id: params[:id])
+                @concert = @venue.concerts.find_by(id: params[:id])
                     redirect_to venue_concerts_path(venue), alert: "Concert not found." if @concert.nil?
             end
         else

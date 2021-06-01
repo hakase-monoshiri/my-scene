@@ -1,5 +1,5 @@
 <div class="concert-container">
-    <strong> <%= concert.name %> </strong> <br>
+    <strong> <%= concert_name_link(concert) %> </strong> <br>
     Description: <%= concert.description %> <br>
     Start time: <%= concert.start_time.strftime("%B %-d, %Y at %l:%M%P") %> <br>
     End time: <%= concert.end_time.strftime("%B %-d, %Y at %l:%M%P")  %> <br>
