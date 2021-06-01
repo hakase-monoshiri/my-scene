@@ -11,7 +11,7 @@
     <%= f.label :end_time%>
     <%= f.datetime_field :end_time %><br>
 
-    <%= f.collection_select :artist_id, Artist.all, :id, :name %>
-    <%= f.collection_select :venue_id, Venue.all, :id, :name %>
+    <%= artist_id_field(concert)%>
+    <%= venue_id_field(concert) %>
   <%= f.submit %>
 <% end %> 

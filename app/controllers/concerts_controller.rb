@@ -43,7 +43,7 @@ class ConcertsController < ApplicationController
     end
 
     def new
-        @concert = Concert.new
+        @concert = Concert.new(artist_id: params[:artist_id], venue_id: params[:venue_id])
     end
 
     def create
