@@ -1,4 +1,7 @@
-<%= concert.name %> <br>
-<%= concert.description %> <br>
-<%= concert.start_time.strftime("%B %-d, %Y at %l:%M%P") %> <br>
-<%= concert.end_time.strftime("%B %-d, %Y at %l:%M%P")  %>
+<div class="concert container">
+    <strong> <%= concert.name %> </strong> <br>
+    Description: <%= concert.description %> <br>
+    Start time: <%= concert.start_time.strftime("%B %-d, %Y at %l:%M%P") %> <br>
+    End time: <%= concert.end_time.strftime("%B %-d, %Y at %l:%M%P")  %> <br>
+</div>
+<br>
