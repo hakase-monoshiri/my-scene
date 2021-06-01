@@ -10,6 +10,7 @@ class VenuesController < ApplicationController
 
     def new
         @venue = Venue.new
+        @venue.address = Address.new(venue_id: @venue.id)
     end
 
     def create
@@ -24,7 +25,13 @@ class VenuesController < ApplicationController
     private
 
     def venue_params
-        params.require(:venue).permit(:name, :description)
+        params.require(:venue).permit(:name, :description, address_attributes: [
+        :street_number,
+        :street_name,
+        :city,
+        :state,
+        :zip,
+        :venue_id])
     end
 
 end
