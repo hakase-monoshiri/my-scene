@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get "index", to: "static#index"
   
+  get "sign-up", to: "static#sign_up"
 
   resources :concerts
 
