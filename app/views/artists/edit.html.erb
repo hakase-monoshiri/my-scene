@@ -1,3 +1,5 @@
 <%= form_tag artist_path(@artist) do %>
 <%= render partial: "form", locals: {artist: @artist} %>
 <% end %>
+
+<%= button_to "Delete Artist", artist_path(@artist), method: :delete %> 
