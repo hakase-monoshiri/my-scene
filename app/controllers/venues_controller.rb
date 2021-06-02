@@ -26,6 +26,16 @@ class VenuesController < ApplicationController
         @venue = Venue.find_by(id: params[:id])
     end
 
+    def update
+        @venue = Venue.find_by(id: params[:id])
+        if @venue.update(venue_params)
+            redirect_to venue_path(@venue)
+        else
+            render "edit"
+        end
+    end
+
+
     private
 
     def venue_params
@@ -36,7 +46,7 @@ class VenuesController < ApplicationController
                 :city,
                 :state,
                 :zip,
-                :venue_id
+                :id
             ]
         )
     end
