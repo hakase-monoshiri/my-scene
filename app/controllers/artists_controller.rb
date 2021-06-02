@@ -25,6 +25,10 @@ class ArtistsController < ApplicationController
         @artist = Artist.find_by(id: params[:id])
     end
 
+
+
+
+
     private
 
     def artist_params
