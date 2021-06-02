@@ -8,3 +8,6 @@ Upcoming Concerts: <br>
 All Concerts: <br>
 <%= render partial:"concerts/concert", collection: @venue.concerts%> <br>
 <br>
+
+
+<%= button_to "Delete Venue", venue_path(@venue), method: :delete %> 
