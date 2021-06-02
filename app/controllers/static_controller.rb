@@ -7,4 +7,6 @@ class StaticController < ApplicationController
         @artist = Artist.new
     end
     
+    def sign_in
+    end
 end

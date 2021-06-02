@@ -26,4 +26,14 @@ module ConcertsHelper
     end
   end
 
+  def concert_detail_link(concert)
+    if @artist
+      link_to concert.venue.name, venue_path(concert.venue)
+    elsif @venue
+      link_to concert.artist.name, artist_path(concert.artist)
+    else
+      link_to concert.artist.name, artist_path(concert.artist)
+    end
+  end
+
 end
