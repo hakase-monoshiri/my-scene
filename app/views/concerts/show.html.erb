@@ -16,6 +16,3 @@ Location: <br>
 Start time: <%= @concert.start_time.strftime("%B %-d, %Y at %l:%M%P") %> <br>
 End time: <%= @concert.end_time.strftime("%B %-d, %Y at %l:%M%P")  %> <br>
 
-
-
-<%= button_to "Delete Concert", concert_path(@concert), method: :delete %> 
