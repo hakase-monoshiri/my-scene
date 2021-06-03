@@ -1,5 +1,8 @@
 class ArtistsController < ApplicationController
 
+    before_action :require_login
+    skip_before_action :require_login, only: [:index, :show, :new]
+
     def index
         @artists = Artist.all
     end
@@ -15,6 +18,7 @@ class ArtistsController < ApplicationController
     def create
         @artist = Artist.new(artist_params)
         if @artist.save
+            session[:user_id] = @artist.id
             redirect_to artist_path(@artist)
         else
             render "new"
