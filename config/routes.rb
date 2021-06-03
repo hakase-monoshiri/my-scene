@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
-  get "index", to: "static#index"
-  
-  get "sign-up", to: "static#sign_up"
+  get "/sign-up", to: "artists#new"
+
+  get "/login", to: "sessions#new"
+
+  post "/login", to: "sessions#create"
+
+  post '/logout', to: "sessions#destroy"
 
   resources :concerts
 

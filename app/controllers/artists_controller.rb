@@ -9,7 +9,7 @@ class ArtistsController < ApplicationController
     end
 
     def new
-        redirect_to sign_up_path
+        @artist = Artist.new
     end
 
     def create
