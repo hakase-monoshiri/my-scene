@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     end
 
     def create
-        @artist = Artist.find_by(name: params[:artist][:name])
+        @artist = Artist.find_by(email: params[:artist][:email])
         return head(:forbidden) unless @artist.authenticate(params[:artist][:password])
         session[:user_id] = @artist.id
         redirect_to artist_path(@artist)
