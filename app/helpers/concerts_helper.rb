@@ -38,5 +38,6 @@ module ConcertsHelper
     if artist.concerts.include?(concert)
         button_to "Edit Concert", edit_concert_path(concert)
     end
-end
+  end
+  
 end

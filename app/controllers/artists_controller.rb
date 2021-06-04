@@ -1,7 +1,7 @@
 class ArtistsController < ApplicationController
 
-    before_action :require_login
-    skip_before_action :require_login, only: [:index, :show, :new, :create]
+    before_action :only_logged_in_artist
+    skip_before_action :only_logged_in_artist, only: [:index, :show, :new, :create]
 
     def index
         @artists = Artist.all
@@ -50,5 +50,8 @@ class ArtistsController < ApplicationController
         params.require(:artist).permit(:name, :hometown, :bio, :email, :password, :password_confirmation)
     end
 
-    
+    def only_logged_in_artist
+        return head(:forbidden) unless params[:id].to_i == current_user_artist.id
+    end
+
 end
