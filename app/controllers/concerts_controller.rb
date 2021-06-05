@@ -19,7 +19,7 @@ class ConcertsController < ApplicationController
                 redirect_to concerts_path
             end
         else
-            @concerts = Concert.search(params[:search])
+            @concerts = Concert.search(params[:option], params[:search])
         end
     end
 
