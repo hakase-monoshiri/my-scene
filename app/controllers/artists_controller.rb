@@ -48,6 +48,7 @@ class ArtistsController < ApplicationController
     def destroy
         artist = Artist.find_by(id: params[:id])
         artist.destroy
+        session.delete :user_id
         redirect_to artists_path
     end
 

@@ -3,6 +3,8 @@ class Concert < ApplicationRecord
     belongs_to :artist
     belongs_to :venue
 
+    has_one :address, through: :venue
+
     include ActiveModel::Validations
     validates_with TimeValidator
 
@@ -14,7 +16,7 @@ class Concert < ApplicationRecord
 
     scope :not_over, -> { where("end_time > ?", DateTime.now) }
 
-    scope :upcoming, -> { not_over.where("start_time BETWEEN ? AND ?", DateTime.now + 30.days, DateTime.now ) } 
+    scope :upcoming, -> { not_over.where("start_time BETWEEN ? AND ?", DateTime.now, DateTime.now + 30.days,) } 
 
 
     def self.search(option, query)

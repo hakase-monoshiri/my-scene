@@ -1,7 +1,7 @@
 class ConcertsController < ApplicationController
 
     before_action :require_login
-    skip_before_action :require_login, only: [:index, :show]
+    skip_before_action :require_login, only: [:index, :show, :upcoming]
 
     def index
         
@@ -24,6 +24,11 @@ class ConcertsController < ApplicationController
         else
             @concerts = Concert.all
         end
+    end
+
+    def upcoming
+        @concerts = Concert.upcoming
+        render "index"
     end
 
     def show

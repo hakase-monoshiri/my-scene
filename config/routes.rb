@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get "/", to: "static#index"
 
+  get "/upcoming-concerts", to: "concerts#upcoming"
+
   get "/sign-up", to: "artists#new"
 
   get "/login", to: "sessions#new"
