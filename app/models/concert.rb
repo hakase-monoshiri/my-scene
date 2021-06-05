@@ -17,5 +17,15 @@ class Concert < ApplicationRecord
     scope :upcoming, -> { not_over.where("start_time BETWEEN ? AND ?", DateTime.now + 30.days, DateTime.now ) } 
 
 
+    def self.search(query)
+        if query
+            self.where("name LIKE ?", "%#{query}%")
+        else
+            self.all
+        end
+    end
+
+
+
 end
 

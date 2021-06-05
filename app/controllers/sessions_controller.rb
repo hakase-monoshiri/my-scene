@@ -12,15 +12,17 @@ class SessionsController < ApplicationController
                 redirect_to artist_path(@artist)
             else
                 @artist = Artist.new(email: auth_hash['info']['email'])
-                redirect_to new_artist_path, notice: "Artist not found"
+                flash[:alert] = "Artist not found, You can sign up here!"
+                render "artists/new"
             end
         else    
             @artist = Artist.find_by(email: params[:artist][:email])
-            if @artist.authenticate(params[:artist][:password])
+            if @artist && @artist.authenticate(params[:artist][:password])
                 session[:user_id] = @artist.id
                 redirect_to artist_path(@artist)
             else
-                flash[:alert] = "Artist not found."
+                @artist = Artist.new(email: params[:artist][:email])
+                flash[:alert] = "Artist not found with those credentials."
                 render "new"
             end
         end

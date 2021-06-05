@@ -1,6 +1,7 @@
 class ArtistsController < ApplicationController
 
     before_action :only_logged_in_artist
+    before_action :current_user_artist
     skip_before_action :only_logged_in_artist, only: [:index, :show, :new, :create]
 
     def index
