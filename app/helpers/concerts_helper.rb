@@ -26,6 +26,17 @@ module ConcertsHelper
     end
   end
 
+  
+  def back_to_artist_or_venue_concerts(concert)
+    if @artist
+      link_to "Back to Artist", artist_concerts_path(@artist)
+    elsif @venue
+      link_to "Back to Venue", venue_concerts_path(@venue)
+    else
+      link_to "Back to Concerts", concerts_path
+    end
+  end
+
 
   def concert_detail_link(concert)
     if @artist
