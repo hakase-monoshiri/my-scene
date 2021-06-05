@@ -1,0 +1,10 @@
+<div class="concert-container">
+    <strong> <%= concert_name_link(concert) %> </strong> <br>
+    <%= link_to concert.venue.name, venue_path(concert.venue) %> <br>
+    <%= link_to concert.artist.name, artist_path(concert.artist) %> <br>
+
+    Description: <%= concert.description %> <br>
+    Start time: <%= concert.start_time.strftime("%B %-d, %Y at %l:%M%P") %> <br>
+    End time: <%= concert.end_time.strftime("%B %-d, %Y at %l:%M%P")  %> <br>
+</div>
+<br>

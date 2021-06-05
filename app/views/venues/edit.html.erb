@@ -1,0 +1,8 @@
+<%= form_tag venue_path(@venue) do %>
+<%= render partial: "form", locals: {venue: @venue, address: @venue.address} %>
+<% end %>
+<br>
+<%= button_to "Delete Venue", venue_path(@venue), method: :delete %> 
+
+<br>
+<%= link_to "Back to Venues", venues_path %>

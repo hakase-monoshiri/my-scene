@@ -4,20 +4,13 @@ class Venue < ApplicationRecord
     has_one :address
     has_many :artists, through: :concerts
 
-    # include ActiveModel::Validations
+    accepts_nested_attributes_for :address
 
+    include ActiveModel::Validations
+    validates_with AddressValidator
 
-    # validates_with AddressValidator
     validates :name, presence: true
 
-    extend Searchable
     
-    # def self.search(query)
-    #     if !query.empty?
-    #         self.where("name LIKE ?", "%#{query}%")
-    #     else
-    #         self.all
-    #     end
-    # end
-
+    
 end
