@@ -26,6 +26,7 @@ module ConcertsHelper
     end
   end
 
+
   def concert_detail_link(concert)
     if @artist
       link_to concert.venue.name, venue_path(concert.venue)

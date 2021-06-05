@@ -1,14 +1,14 @@
 <h1><%= @concert.name %> </h1> <br>
 
 Artist: <br>
-<%= @concert.artist.name %> <br>
+<%= link_to @concert.artist.name, artist_path(@concert.artist)%> <br>
 
 About: <br>
 <%= @concert.description %> <br>
 
 Location: <br>
 
-<%= @concert.venue.name %> <br>
+<%= link_to @concert.venue.name, venue_path(@concert.venue)  %> <br>
 <%= render partial: "addresses/address", locals: {address: @concert.venue.address ||= Address.all.first} %> <br>
 
 <br>
@@ -17,3 +17,4 @@ Start time: <%= @concert.start_time.strftime("%B %-d, %Y at %l:%M%P") %> <br>
 End time: <%= @concert.end_time.strftime("%B %-d, %Y at %l:%M%P")  %> <br>
 
 <%= edit_concert_button(@concert, @current_user_artist) %>
+<%= link_to "Back to Concerts", concerts_path %>
