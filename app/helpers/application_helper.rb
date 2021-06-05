@@ -12,6 +12,12 @@ module ApplicationHelper
         end
     end
 
+    def sign_up_link
+        unless logged_in?
+            link_to "Sign-up", sign_up_path
+        end
+    end
+
     def add_concert_button
         if @artist
             button_to "Add a concert", new_artist_concert_path(@artist), method: :get
