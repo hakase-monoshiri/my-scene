@@ -43,6 +43,7 @@ class ConcertsController < ApplicationController
         else
             @concert = Concert.find(params[:id])
         end
+        
     end
 
     def new

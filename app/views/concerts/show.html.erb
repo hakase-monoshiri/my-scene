@@ -16,4 +16,4 @@ Location: <br>
 Start time: <%= @concert.start_time.strftime("%B %-d, %Y at %l:%M%P") %> <br>
 End time: <%= @concert.end_time.strftime("%B %-d, %Y at %l:%M%P")  %> <br>
 
-<%= edit_concert_button(@concert, current_user_artist) %>
+<%= edit_concert_button(@concert, @current_artist) %>

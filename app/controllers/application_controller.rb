@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 
     
     def require_login
+        @current_user_artist = current_user_artist
         return head(:forbidden) unless logged_in?
     end
 
@@ -13,5 +14,6 @@ class ApplicationController < ActionController::Base
         Artist.find_by(id: session[:user_id])
     end
 
+    
     
 end
