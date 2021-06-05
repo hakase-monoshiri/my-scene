@@ -38,14 +38,6 @@ module ConcertsHelper
   end
 
 
-  def concert_detail_link(concert)
-    if @artist
-      link_to concert.venue.name, venue_path(concert.venue)
-    else
-      link_to concert.artist.name, artist_path(concert.artist)
-    end
-  end
-
   def edit_concert_button(concert, artist)
     if artist && artist.concerts.include?(concert)
         button_to "Edit Concert", edit_concert_path(concert)
