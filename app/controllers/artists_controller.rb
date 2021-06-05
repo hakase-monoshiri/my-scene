@@ -51,7 +51,7 @@ class ArtistsController < ApplicationController
     end
 
     def only_logged_in_artist
-        return head(:forbidden) unless params[:id].to_i == current_user_artist.id
+        return head(:forbidden) unless params[:id].to_i == current_user_id
     end
 
 end

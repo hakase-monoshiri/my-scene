@@ -43,7 +43,7 @@ class ConcertsController < ApplicationController
         else
             @concert = Concert.find(params[:id])
         end
-        
+        byebug
     end
 
     def new

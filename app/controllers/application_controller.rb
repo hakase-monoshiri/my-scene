@@ -14,6 +14,11 @@ class ApplicationController < ActionController::Base
         Artist.find_by(id: session[:user_id])
     end
 
+    def current_user_id
+        if current_user_artist
+            current_user_artist.id
+        end
+    end
     
     
 end
