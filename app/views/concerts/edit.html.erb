@@ -3,4 +3,7 @@
 <% end %> 
 
 <br>
+
+<%= back_to_artist_or_venue_concerts(@concert) %>
+
 <%= button_to "Delete Concert", concert_path(@concert), method: :delete %> 

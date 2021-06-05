@@ -18,6 +18,16 @@
       </div>
     <% end %>
 
+    <div id="concert-search-field">
+      <%= form_tag concerts_path, method: :get  do %>
+          <label>Search for Concerts:</label>
+          <%= select_tag "option", options_for_select(["Name", "Artist", "Venue"])%>
+          <%= text_field_tag :search, params[:search]%>
+          <%= submit_tag "Search" %>
+      <% end %>
+    </div>
+
+
     <%= yield %>
   </body>
 </html>

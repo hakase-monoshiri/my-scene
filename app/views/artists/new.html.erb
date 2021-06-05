@@ -1,3 +1,6 @@
 <%= form_tag artists_path do %>
 <%= render partial: "artists/form", locals: {artist: @artist} %>
 <% end %>
+
+<br>
+<%= link_to "Back to Artists", artists_path %> <br>

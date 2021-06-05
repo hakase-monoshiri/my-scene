@@ -28,6 +28,12 @@ class ArtistsController < ApplicationController
 
     def edit
         @artist = Artist.find_by(id: params[:id])
+        if @artist
+            render "edit"
+        else
+            flash[:alert] = "Whoops, we something went wrong"
+            redirect_to artists_path
+        end
     end
 
     def update

@@ -1,3 +1,17 @@
+<% if @concert.errors.any? %>
+  <div id="error_explanation">
+    <h2>There were some errors:</h2>
+    <ul>
+      <% @concert.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %> 
+
 <%= form_tag concerts_path do %>
  <%= render partial: 'form', locals: {concert: @concert} %>
 <% end %> 
+
+<br>
+<%= back_to_artist_or_venue_concerts(@concert) %>

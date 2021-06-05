@@ -4,6 +4,7 @@ class ConcertsController < ApplicationController
     skip_before_action :require_login, only: [:index, :show]
 
     def index
+        
         if params[:search]
             @concerts = Concert.search(params[:option], params[:search])
         elsif params[:artist_id]
@@ -48,13 +49,14 @@ class ConcertsController < ApplicationController
     end
 
     def new
+       
         @concert = Concert.new(artist_id: params[:artist_id], venue_id: params[:venue_id])
     end
 
     def create
-        concert = Concert.new(concert_params)
-        if concert.save
-            redirect_to concert_path(concert)
+        @concert = Concert.new(concert_params)
+        if @concert.save
+            redirect_to concert_path(@concert)
         else
             render "new"
         end
