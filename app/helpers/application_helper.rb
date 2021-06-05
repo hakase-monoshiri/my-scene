@@ -19,10 +19,12 @@ module ApplicationHelper
     end
 
     def add_concert_button
-        if @artist
-            button_to "Add a concert", new_artist_concert_path(@artist), method: :get
-        elsif @venue
-            button_to "Add a concert", new_venue_concert_path(@venue), method: :get
+        if logged_in?
+            if @artist
+                button_to "Add a concert", new_artist_concert_path(@artist), method: :get
+            elsif @venue
+                button_to "Add a concert", new_venue_concert_path(@venue), method: :get
+            end
         end
     end
 

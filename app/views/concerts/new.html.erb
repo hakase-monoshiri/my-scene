@@ -1,3 +1,5 @@
+<h1> New Concert </h1>
+
 <% if @concert.errors.any? %>
   <div id="error_explanation">
     <h2>There were some errors:</h2>
@@ -12,6 +14,9 @@
 <%= form_tag concerts_path do %>
  <%= render partial: 'form', locals: {concert: @concert} %>
 <% end %> 
+
+If you need to make a new venue, please click here:
+<%= link_to "Make a new venue", new_venue_path %>
 
 <br>
 <%= back_to_artist_or_venue_concerts(@concert) %>
