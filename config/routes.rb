@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   post '/logout', to: "sessions#destroy"
 
+  get '/auth/github/callback' => 'sessions#create' 
+
+  get '/auth/facebook/callback' => 'sessions#create' 
+
   resources :concerts
 
   resources :artists, only: [:index, :show, :new, :create, :edit, :update, :destroy]
