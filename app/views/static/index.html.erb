@@ -4,7 +4,7 @@
 
 <h2> You can begin searching for concerts here: </h2>
 
-<div id="concert-search-field">
+<div id="homepage-concert-search-field">
     <%= form_tag concerts_path, method: :get  do %>
         <label>Search for Concerts:</label>
         <%= select_tag "option", options_for_select(["Name", "Artist", "Venue"])%>
@@ -22,6 +22,6 @@
 <h3> If you are an artist, please: </h3>
 <h4> 
     <%= link_to "Log in", login_path %>
-    <%= link_to "or Sign-up", sign_up_path %> 
+    <%= link_to "...or Sign-up", sign_up_path %> 
 </h4>
 
