@@ -4,7 +4,9 @@ class ConcertsController < ApplicationController
     skip_before_action :require_login, only: [:index, :show]
 
     def index
-        if params[:artist_id]
+        if params[:search]
+            @concerts = Concert.search(params[:option], params[:search])
+        elsif params[:artist_id]
             @artist = Artist.find_by(id: params[:artist_id])
             if @artist
                 @concerts = @artist.concerts
@@ -19,7 +21,7 @@ class ConcertsController < ApplicationController
                 redirect_to concerts_path
             end
         else
-            @concerts = Concert.search(params[:option], params[:search])
+            @concerts = Concert.all
         end
     end
 
